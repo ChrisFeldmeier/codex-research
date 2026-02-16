@@ -9,7 +9,7 @@
 The application follows a strict separation of concerns across three distinct runtime environments. Each layer runs in its own operating system process and communicates through well-defined interfaces.
 
 ```mermaid
-graph TB
+flowchart TB
     subgraph "Layer 1: Renderer Process (Chromium)"
         UI["React Application<br/>Chat UI / Terminal / Settings / File Browser"]
         XTERM["xterm.js<br/>Terminal Emulator"]
@@ -59,7 +59,7 @@ graph TB
 Every running Codex instance consists of multiple operating system processes. Electron spawns several by design, and Codex adds its own.
 
 ```mermaid
-graph LR
+flowchart LR
     MAIN["Main Process<br/>(Node.js)"]
     GPU["GPU Process<br/>(Chromium)"]
     RENDERER["Renderer Process<br/>(Chromium Sandbox)"]

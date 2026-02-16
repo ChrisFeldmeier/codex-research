@@ -36,11 +36,11 @@ Additionally, Vite code-splits 430+ language grammar files and theme definitions
 ## Component Architecture
 
 ```mermaid
-graph TD
-    ROOT["App Root (#root)"]
+flowchart TD
+    ROOT["App Root - #root"]
     ROOT --> SHELL["Application Shell"]
-    SHELL --> TOOLBAR["Toolbar / Title Bar"]
-    SHELL --> SIDEBAR["Sidebar (Thread List)"]
+    SHELL --> TOOLBAR["Toolbar - Title Bar"]
+    SHELL --> SIDEBAR["Sidebar - Thread List"]
     SHELL --> MAIN["Main Content Area"]
 
     MAIN --> THREAD_VIEW["Thread View"]
@@ -48,25 +48,25 @@ graph TD
     MAIN --> WELCOME["Welcome Screen"]
 
     THREAD_VIEW --> MSG_LIST["Message List"]
-    THREAD_VIEW --> COMPOSER["Composer (ProseMirror)"]
-    THREAD_VIEW --> TERMINAL["Terminal Panel (xterm.js)"]
+    THREAD_VIEW --> COMPOSER["Composer - ProseMirror"]
+    THREAD_VIEW --> TERMINAL["Terminal Panel - xterm.js"]
 
     MSG_LIST --> USER_MSG["User Message Bubble"]
     MSG_LIST --> AI_MSG["AI Message Bubble"]
 
     AI_MSG --> MARKDOWN["Markdown Renderer"]
-    AI_MSG --> CODE_BLOCK["Code Block (Shiki)"]
+    AI_MSG --> CODE_BLOCK["Code Block - Shiki"]
     AI_MSG --> DIFF_VIEW["Diff View"]
     AI_MSG --> DIAGRAM["Mermaid Diagram"]
     AI_MSG --> TOOL_CALL["Tool Call Display"]
 
     COMPOSER --> INPUT["Text Input"]
-    COMPOSER --> FOOTER["Composer Footer (Model / Permissions)"]
+    COMPOSER --> FOOTER["Composer Footer - Model Permissions"]
 
     SIDEBAR --> THREAD_ITEM["Thread Item"]
     SIDEBAR --> NEW_THREAD["New Thread Button"]
 
-    TOOLBAR --> TRAFFIC["Traffic Lights (macOS)"]
+    TOOLBAR --> TRAFFIC["Traffic Lights - macOS"]
     TOOLBAR --> NAV["Navigation Controls"]
     TOOLBAR --> CMD_PALETTE["Command Palette Trigger"]
 ```
@@ -109,7 +109,7 @@ Git operations follow a parallel path. The renderer calls `electronBridge.sendWo
 The theming system is a four-layer CSS variable cascade designed for maximum flexibility without runtime JavaScript.
 
 ```mermaid
-graph TD
+flowchart TD
     L1["Layer 1: Base Palette<br/>--gray-0, --gray-900, --blue-300, ..."]
     L2["Layer 2: Semantic Colors<br/>--color-background-surface<br/>--color-text-foreground<br/>--color-border"]
     L3["Layer 3: VSCode-Compatible Tokens<br/>--vscode-editor-background<br/>--vscode-foreground"]

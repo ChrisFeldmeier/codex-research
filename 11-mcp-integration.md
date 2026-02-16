@@ -7,7 +7,7 @@
 ## Architecture
 
 ```mermaid
-graph TD
+flowchart TD
     subgraph "Codex App"
         CLI["codex app-server"]
         DSH["DevboxSessionHandler"]

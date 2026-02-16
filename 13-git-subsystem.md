@@ -7,7 +7,7 @@
 ## Architecture
 
 ```mermaid
-graph TD
+flowchart TD
     subgraph "Renderer"
         GIT_UI["Git decorations<br/>Branch indicator<br/>Diff view"]
     end
@@ -30,7 +30,7 @@ graph TD
     WORKER --> REGISTRY
     REGISTRY --> REPO
     REPO --> WT
-    REPO -->|"git commands"| GIT_EXEC["git (system binary)"]
+    REPO -->|"git commands"| GIT_EXEC["git system binary"]
 ```
 
 ---

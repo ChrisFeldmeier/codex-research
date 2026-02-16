@@ -7,7 +7,7 @@
 ## Window Types
 
 ```mermaid
-graph TD
+flowchart TD
     WM["WindowManager"]
     WM --> PRIMARY["Primary Window<br/>Main chat + terminal UI<br/>One per host context"]
     WM --> SECONDARY["Secondary Window<br/>Settings, dialogs<br/>Auxiliary UI"]
@@ -47,7 +47,7 @@ For opaque mode (when vibrancy is disabled or unsupported), the background switc
 Each window is associated with a **host context** -- an object that holds the DevboxSessionHandler, thread state, and host-specific configuration for that window.
 
 ```mermaid
-graph LR
+flowchart LR
     W1["Window #1<br/>(Local)"] --> CTX1["Context: Local Host<br/>DevboxSession: stdio"]
     W2["Window #2<br/>(SSH Remote)"] --> CTX2["Context: SSH Host<br/>DevboxSession: WebSocket"]
 

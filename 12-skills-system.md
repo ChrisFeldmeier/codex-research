@@ -7,7 +7,7 @@
 ## Architecture
 
 ```mermaid
-graph TD
+flowchart TD
     subgraph "Filesystem"
         SKILL_DIR["~/.codex/skills/"]
         S1["skill-a/SKILL.md"]

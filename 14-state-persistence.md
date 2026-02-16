@@ -7,7 +7,7 @@
 ## Storage Overview
 
 ```mermaid
-graph TD
+flowchart TD
     subgraph "CLI-Owned Storage"
         SQLITE["SQLite Database<br/>~/.codex/sqlite/codex.db"]
         CONFIG["Config File<br/>~/.codex/config.toml"]
@@ -138,12 +138,12 @@ flowchart LR
     CLI_WRITE --> CLI_READ["CLI reads on next request"]
 
     CREATE2["User adjusts UI<br/>(window size, preference)"]
-    CREATE2 --> GS_WRITE["GlobalStateStore.set()"]
+    CREATE2 --> GS_WRITE["GlobalStateStore.set"]
     GS_WRITE --> GS_FLUSH["Debounced flush to JSON"]
-    GS_FLUSH --> GS_READ["GlobalStateStore.get() on next startup"]
+    GS_FLUSH --> GS_READ["GlobalStateStore.get on next startup"]
 
     CREATE3["User changes config<br/>(model, MCP server)"]
-    CREATE3 --> CONFIG_WRITE["CLI: config/write"]
+    CREATE3 --> CONFIG_WRITE["CLI config write"]
     CONFIG_WRITE --> TOML["Write to config.toml"]
     TOML --> CONFIG_READ["CLI reads on next operation"]
 ```

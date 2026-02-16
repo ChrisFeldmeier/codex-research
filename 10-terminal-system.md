@@ -7,7 +7,7 @@
 ## Architecture
 
 ```mermaid
-graph LR
+flowchart LR
     subgraph "Renderer"
         XTERM["xterm.js<br/>(Canvas renderer)"]
     end

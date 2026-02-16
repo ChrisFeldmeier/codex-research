@@ -7,7 +7,7 @@
 ## Architecture
 
 ```mermaid
-graph TD
+flowchart TD
     subgraph "Main Process"
         WM_MOD["WatcherManager"]
         STDIO["StdioConnection"]
@@ -187,7 +187,7 @@ For remote environments (devbox, SSH), the stdio transport is replaced by a WebS
 The `CODEX_APP_SERVER_WS_URL` environment variable triggers WebSocket mode. When set, the DevboxSessionHandler creates a `WebSocketConnection` instead of a `StdioConnection`.
 
 ```mermaid
-graph LR
+flowchart LR
     subgraph "Local Mode"
         MAIN_L["Main Process"] -->|"stdio pipes"| CLI_L["codex app-server<br/>(local process)"]
     end

@@ -7,20 +7,20 @@
 ## Channel Architecture
 
 ```mermaid
-graph LR
+flowchart LR
     subgraph "Renderer Process"
         R_BRIDGE["electronBridge"]
         R_WINDOW["window events"]
     end
 
     subgraph "Preload Layer"
-        P_INVOKE["ipcRenderer.invoke()"]
-        P_ON["ipcRenderer.on()"]
+        P_INVOKE["ipcRenderer.invoke"]
+        P_ON["ipcRenderer.on"]
     end
 
     subgraph "Main Process"
-        M_HANDLE["ipcMain.handle()"]
-        M_SEND["webContents.send()"]
+        M_HANDLE["ipcMain.handle"]
+        M_SEND["webContents.send"]
         M_ROUTER["IpcMessageRouter"]
         M_DSH["DevboxSessionHandler"]
         M_WORKER["WorkerHost"]
@@ -96,11 +96,11 @@ flowchart TD
     LOOKUP -->|"Context found"| DISPATCH["Dispatch to context handler"]
 
     DISPATCH --> DSH_CHECK{"Is it a CLI-bound message?"}
-    DSH_CHECK -->|"Yes"| DSH["DevboxSessionHandler.handleMessage()"]
+    DSH_CHECK -->|"Yes"| DSH["DevboxSessionHandler.handleMessage"]
     DSH_CHECK -->|"No"| INTERNAL{"Is it an internal message?"}
     INTERNAL -->|"Yes"| INT_HANDLE["Handle internally<br/>(window ops, settings, etc.)"]
     INTERNAL -->|"No"| SKILL_CHECK{"Is it a skill message?"}
-    SKILL_CHECK -->|"Yes"| SK["SkillManager.handleMessage()"]
+    SKILL_CHECK -->|"Yes"| SK["SkillManager.handleMessage"]
     SKILL_CHECK -->|"No"| UNKNOWN["Log unhandled message type"]
 ```
 

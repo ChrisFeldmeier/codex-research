@@ -9,7 +9,7 @@
 The modules live under `src/main/modules/` and are organized by domain. Some modules are standalone files, others are grouped into subdirectories.
 
 ```mermaid
-graph TD
+flowchart TD
     subgraph "Application Core"
         INIT["app-init"]
         EVENTS["app-events"]
@@ -31,7 +31,7 @@ graph TD
         SESSION["session"]
         DEVBOX["devbox"]
         FS["file-system"]
-        STDIO["(StdioConnection)"]
+        STDIO["StdioConnection"]
         WSC["websocket-connection"]
         WSS["websocket-server"]
         WSCL["websocket-client"]

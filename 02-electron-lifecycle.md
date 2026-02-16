@@ -59,17 +59,17 @@ Once Chromium has finished initializing, `app.whenReady()` resolves and the main
 
 ```mermaid
 flowchart TD
-    READY["app.whenReady()"]
+    READY["app.whenReady"]
     READY --> WM["Instantiate WindowManager"]
     READY --> IPC_R["Register IPC handlers"]
-    READY --> PROTO["Register app:// protocol handler"]
+    READY --> PROTO["Register app protocol handler"]
     READY --> DL["Initialize DeepLinkHandler"]
     READY --> AU["Initialize AutoUpdateManager"]
     READY --> TELE["Start TelemetryReporter"]
     READY --> EVENTS["Create AppEventEmitter"]
 
     WM --> CREATE_WIN["Create primary BrowserWindow"]
-    CREATE_WIN --> LOAD_URL["Load app://-/index.html"]
+    CREATE_WIN --> LOAD_URL["Load index.html via app scheme"]
     LOAD_URL --> WAIT_READY["Wait for renderer 'ready' message"]
 
     AU --> CHECK["Check Sparkle feed for updates"]

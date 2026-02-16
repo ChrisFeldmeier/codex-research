@@ -7,7 +7,7 @@
 ## Defense in Depth
 
 ```mermaid
-graph TD
+flowchart TD
     subgraph "Layer 1: Process Isolation"
         MAIN_P["Main Process<br/>(Full Node.js access)"]
         RENDERER_P["Renderer Process<br/>(Sandboxed Chromium)"]
@@ -28,7 +28,7 @@ graph TD
 
     subgraph "Layer 4: Integrity"
         ASAR["ASAR Integrity Check"]
-        SIGN["Code Signing (macOS)"]
+        SIGN["Code Signing - macOS"]
         UPDATE["Signed Auto-Updates"]
     end
 

@@ -142,7 +142,7 @@ Key entries:
 ## Build Flavors
 
 ```mermaid
-graph LR
+flowchart LR
     SRC["Source Code"]
     SRC --> DEV_BUILD["dev build<br/>No signing, debug tools"]
     SRC --> ALPHA_BUILD["internal-alpha build<br/>Internal signing, beta features"]

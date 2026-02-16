@@ -7,7 +7,7 @@
 ## Observability Stack
 
 ```mermaid
-graph TD
+flowchart TD
     subgraph "Data Sources"
         MAIN["Main Process Errors"]
         RENDERER["Renderer Errors"]
@@ -120,7 +120,7 @@ Statsig controls feature visibility and A/B testing. The application checks feat
 The 4-tier build flavor system provides a separate dimension of feature control:
 
 ```mermaid
-graph LR
+flowchart LR
     DEV["dev<br/>All features enabled"]
     ALPHA["internal-alpha<br/>Most features"]
     BETA["public-beta<br/>Stable features"]
