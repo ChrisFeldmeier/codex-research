@@ -9,22 +9,22 @@
 ```mermaid
 flowchart LR
     subgraph "Renderer"
-        XTERM["xterm.js<br/>(Canvas renderer)"]
+        XTERM["xterm.js - Canvas renderer"]
     end
 
     subgraph "Main Process"
-        PTY_MOD["PtyProcess<br/>(node-pty wrapper)"]
-        MCP_TERM["McpServerManager<br/>(Terminal Sessions)"]
+        PTY_MOD["PtyProcess - node-pty wrapper"]
+        MCP_TERM["McpServerManager - Terminal Sessions"]
     end
 
     subgraph "Operating System"
-        SHELL["Shell Process<br/>(bash/zsh)"]
+        SHELL["Shell Process - bash or zsh"]
     end
 
-    XTERM -->|"IPC: writeTerminalInput"| PTY_MOD
+    XTERM -->|"IPC writeTerminalInput"| PTY_MOD
     PTY_MOD -->|"node-pty"| SHELL
     SHELL -->|"output"| PTY_MOD
-    PTY_MOD -->|"IPC: terminal output"| XTERM
+    PTY_MOD -->|"IPC terminal output"| XTERM
 
     MCP_TERM --> PTY_MOD
 ```
@@ -53,7 +53,7 @@ The `node-pty` addon uses OS-level pseudo-terminals (PTY), which means the spawn
 stateDiagram-v2
     [*] --> Created: createTerminalSession
     Created --> Active: Shell process spawned
-    Active --> Active: User types / output streams
+    Active --> Active: User types - output streams
     Active --> Resized: resizeTerminal
     Resized --> Active
     Active --> Closed: closeTerminalSession

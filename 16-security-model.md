@@ -9,13 +9,13 @@
 ```mermaid
 flowchart TD
     subgraph "Layer 1: Process Isolation"
-        MAIN_P["Main Process<br/>(Full Node.js access)"]
-        RENDERER_P["Renderer Process<br/>(Sandboxed Chromium)"]
-        CLI_P["CLI Process<br/>(Sandboxed Rust)"]
+        MAIN_P["Main Process - Full Node.js access"]
+        RENDERER_P["Renderer Process - Sandboxed Chromium"]
+        CLI_P["CLI Process - Sandboxed Rust"]
     end
 
     subgraph "Layer 2: Communication Controls"
-        PRELOAD["Preload Bridge<br/>(contextBridge)"]
+        PRELOAD["Preload Bridge - contextBridge"]
         IPC_VAL["IPC Sender Validation"]
         CSP_L["Content Security Policy"]
     end

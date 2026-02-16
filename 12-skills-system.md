@@ -9,10 +9,10 @@
 ```mermaid
 flowchart TD
     subgraph "Filesystem"
-        SKILL_DIR["~/.codex/skills/"]
-        S1["skill-a/SKILL.md"]
-        S2["skill-b/SKILL.md"]
-        S3["skill-c/SKILL.md"]
+        SKILL_DIR["~/.codex/skills"]
+        S1["skill-a - SKILL.md"]
+        S2["skill-b - SKILL.md"]
+        S3["skill-c - SKILL.md"]
     end
 
     subgraph "Main Process"

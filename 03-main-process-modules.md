@@ -20,8 +20,8 @@ flowchart TD
     end
 
     subgraph "Window & UI"
-        WM["window/window-manager"]
-        IPC_MOD["window/ipc"]
+        WM["window-manager"]
+        IPC_MOD["window-ipc"]
         CTX["context-menu"]
         NOTIF["notifications"]
         TRAY["tray"]
@@ -54,7 +54,7 @@ flowchart TD
     end
 
     subgraph "Git"
-        GIT["git/git-module"]
+        GIT["git-module"]
         WORKER["worker-host"]
     end
 
@@ -68,7 +68,7 @@ flowchart TD
     subgraph "Observability"
         TELE["telemetry"]
         ERR_R["error-reporter"]
-        SENTRY_MOD["sentry/sentry-module"]
+        SENTRY_MOD["sentry-module"]
     end
 
     subgraph "System Integration"

@@ -12,20 +12,20 @@ flowchart TD
         WM_MOD["WatcherManager"]
         STDIO["StdioConnection"]
         AUTH["Auth Token Cache"]
-        FETCH["WebSocketMessageHandler<br/>(Fetch Proxy)"]
+        FETCH["WebSocketMessageHandler - Fetch Proxy"]
     end
 
     subgraph "CLI Process"
         SERVER["codex app-server"]
         DB["SQLite Database"]
-        HTTP["HTTP Client<br/>(OpenAI API)"]
+        HTTP["HTTP Client - OpenAI API"]
         TOOLS_CLI["Tool Executor"]
         SANDBOX_CLI["Sandbox Engine"]
     end
 
     WM_MOD --> STDIO
-    STDIO -->|"stdin (JSON)"| SERVER
-    SERVER -->|"stdout (NDJSON)"| STDIO
+    STDIO -->|"stdin JSON"| SERVER
+    SERVER -->|"stdout NDJSON"| STDIO
     SERVER --> DB
     SERVER --> HTTP
     SERVER --> TOOLS_CLI
@@ -60,7 +60,7 @@ stateDiagram-v2
     Spawning --> Handshaking: Process started
     Handshaking --> Connected: Initialize response received
     Connected --> Connected: Normal operation
-    Connected --> Reconnecting: Process crashed / pipe broken
+    Connected --> Reconnecting: Process crashed - pipe broken
     Reconnecting --> Spawning: Backoff timer expired
     Reconnecting --> Disconnected: Max retries exceeded
     Connected --> Disconnected: Graceful shutdown
@@ -189,11 +189,11 @@ The `CODEX_APP_SERVER_WS_URL` environment variable triggers WebSocket mode. When
 ```mermaid
 flowchart LR
     subgraph "Local Mode"
-        MAIN_L["Main Process"] -->|"stdio pipes"| CLI_L["codex app-server<br/>(local process)"]
+        MAIN_L["Main Process"] -->|"stdio pipes"| CLI_L["codex app-server - local"]
     end
 
     subgraph "Remote Mode"
-        MAIN_R["Main Process"] -->|"WebSocket (TCP)"| CLI_R["codex app-server<br/>(remote host)"]
+        MAIN_R["Main Process"] -->|"WebSocket TCP"| CLI_R["codex app-server - remote"]
     end
 ```
 

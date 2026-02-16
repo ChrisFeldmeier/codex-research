@@ -48,11 +48,11 @@ Each window is associated with a **host context** -- an object that holds the De
 
 ```mermaid
 flowchart LR
-    W1["Window #1<br/>(Local)"] --> CTX1["Context: Local Host<br/>DevboxSession: stdio"]
-    W2["Window #2<br/>(SSH Remote)"] --> CTX2["Context: SSH Host<br/>DevboxSession: WebSocket"]
+    W1["Window 1 - Local"] --> CTX1["Context Local Host - DevboxSession stdio"]
+    W2["Window 2 - SSH Remote"] --> CTX2["Context SSH Host - DevboxSession WebSocket"]
 
-    CTX1 --> CLI1["codex app-server<br/>(local process)"]
-    CTX2 --> CLI2["codex app-server<br/>(remote process)"]
+    CTX1 --> CLI1["codex app-server - local"]
+    CTX2 --> CLI2["codex app-server - remote"]
 ```
 
 When the user opens a window for a different host, a new context is created with its own CLI connection. This allows simultaneous work on local and remote environments.

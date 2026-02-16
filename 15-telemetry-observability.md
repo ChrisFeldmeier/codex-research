@@ -12,19 +12,19 @@ flowchart TD
         MAIN["Main Process Errors"]
         RENDERER["Renderer Errors"]
         CLI_ERR["CLI Errors"]
-        METRICS["Process Metrics<br/>(heap, CPU)"]
+        METRICS["Process Metrics - heap, CPU"]
     end
 
     subgraph "Collection Layer"
-        SENTRY_SDK["Sentry SDK<br/>(Both processes)"]
-        TELE["TelemetryReporter<br/>(Unix Domain Socket)"]
-        STATSIG["Statsig SDK<br/>(Feature Flags)"]
+        SENTRY_SDK["Sentry SDK - Both processes"]
+        TELE["TelemetryReporter - Unix Domain Socket"]
+        STATSIG["Statsig SDK - Feature Flags"]
     end
 
     subgraph "Destinations"
-        SENTRY_BE["Sentry Backend<br/>(Error Tracking)"]
-        DD["Datadog<br/>(Metrics + Logs)"]
-        AB["ab.chatgpt.com<br/>(A/B Testing)"]
+        SENTRY_BE["Sentry Backend - Error Tracking"]
+        DD["Datadog - Metrics and Logs"]
+        AB["ab.chatgpt.com - A-B Testing"]
     end
 
     MAIN --> SENTRY_SDK
@@ -60,15 +60,15 @@ The Sentry integration is unusually complex because it must bridge two isolated 
 
 ```mermaid
 sequenceDiagram
-    participant R as Renderer (Sentry SDK)
-    participant P as Preload (IPC Bridge)
-    participant M as Main (SentryHub)
+    participant R as Renderer - Sentry SDK
+    participant P as Preload - IPC Bridge
+    participant M as Main - SentryHub
     participant S as Sentry Backend
 
-    R->>P: sentry-ipc.envelope (error data)
+    R->>P: sentry-ipc.envelope error data
     P->>M: Forward via ipcMain.on
     M->>M: Enrich with main process context
-    M->>S: POST /api/{project}/envelope/
+    M->>S: POST api envelope
 ```
 
 The renderer runs its own Sentry SDK but does not send events directly to the Sentry backend. Instead, events are routed through the main process via the `sentry-ipc.*` channels. The main process enriches them with additional context (user info, session data, build flavor) before forwarding to Sentry.

@@ -16,12 +16,12 @@ flowchart TD
 
     subgraph "Main Process Storage"
         GLOBAL["GlobalStateStore<br/>~/.codex/.codex-global-state.json"]
-        ELECTRON_DATA["Electron User Data<br/>~/Library/Application Support/Codex/"]
+        ELECTRON_DATA["Electron User Data - Application Support"]
     end
 
     subgraph "Renderer Storage"
-        LOCAL_STORAGE["localStorage<br/>(Chromium)"]
-        SESSION["sessionStorage<br/>(Chromium)"]
+        LOCAL_STORAGE["localStorage - Chromium"]
+        SESSION["sessionStorage - Chromium"]
     end
 ```
 
@@ -133,16 +133,16 @@ This directory is managed entirely by Electron and Chromium. The application cod
 
 ```mermaid
 flowchart LR
-    CREATE["User creates data<br/>(thread, message, setting)"]
+    CREATE["User creates data - thread, message, setting"]
     CREATE --> CLI_WRITE["CLI writes to SQLite"]
     CLI_WRITE --> CLI_READ["CLI reads on next request"]
 
-    CREATE2["User adjusts UI<br/>(window size, preference)"]
+    CREATE2["User adjusts UI - window size, preference"]
     CREATE2 --> GS_WRITE["GlobalStateStore.set"]
     GS_WRITE --> GS_FLUSH["Debounced flush to JSON"]
     GS_FLUSH --> GS_READ["GlobalStateStore.get on next startup"]
 
-    CREATE3["User changes config<br/>(model, MCP server)"]
+    CREATE3["User changes config - model, MCP server"]
     CREATE3 --> CONFIG_WRITE["CLI config write"]
     CONFIG_WRITE --> TOML["Write to config.toml"]
     TOML --> CONFIG_READ["CLI reads on next operation"]

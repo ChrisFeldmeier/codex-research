@@ -11,7 +11,7 @@ The application follows a strict separation of concerns across three distinct ru
 ```mermaid
 flowchart TB
     subgraph "Layer 1: Renderer Process (Chromium)"
-        UI["React Application<br/>Chat UI / Terminal / Settings / File Browser"]
+        UI["React Application<br/>Chat UI - Terminal - Settings - File Browser"]
         XTERM["xterm.js<br/>Terminal Emulator"]
         SHIKI["Shiki<br/>Code Highlighting"]
         PROSE["ProseMirror<br/>Rich Text Editor"]
@@ -36,17 +36,17 @@ flowchart TB
     end
 
     subgraph "External"
-        OPENAI["OpenAI Backend<br/>chatgpt.com/backend-api"]
-        MCPEXT["MCP Servers<br/>(Supabase, GitHub, ...)"]
+        OPENAI["OpenAI Backend<br/>chatgpt.com backend-api"]
+        MCPEXT["MCP Servers - Supabase, GitHub"]
     end
 
-    UI -->|"electronBridge (IPC)"| IPC
+    UI -->|"electronBridge IPC"| IPC
     IPC --> DSH
     IPC --> GIT
     IPC --> MCP
-    DSH -->|"stdio (JSON-RPC)"| CLI
+    DSH -->|"stdio JSON-RPC"| CLI
     CLI -->|"HTTPS + Auth"| OPENAI
-    MCP -->|"stdio / SSE"| MCPEXT
+    MCP -->|"stdio - SSE"| MCPEXT
     CLI --> SANDBOX
     CLI --> TOOLS
     CLI --> AI

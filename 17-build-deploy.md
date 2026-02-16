@@ -9,15 +9,15 @@
 ```mermaid
 flowchart LR
     subgraph "Source Code"
-        REACT["React App<br/>(TypeScript)"]
-        MAIN_TS["Main Process<br/>(TypeScript)"]
-        RUST["CLI Source<br/>(Rust)"]
+        REACT["React App - TypeScript"]
+        MAIN_TS["Main Process - TypeScript"]
+        RUST["CLI Source - Rust"]
     end
 
     subgraph "Build Tools"
-        VITE["Vite<br/>(Frontend bundle)"]
-        VITE_MAIN["Vite<br/>(Main process bundle)"]
-        CARGO["Cargo<br/>(Rust compiler)"]
+        VITE["Vite - Frontend bundle"]
+        VITE_MAIN["Vite - Main process bundle"]
+        CARGO["Cargo - Rust compiler"]
     end
 
     subgraph "Outputs"
@@ -176,7 +176,7 @@ sequenceDiagram
     participant Sparkle as Sparkle Framework
     participant Feed as Appcast Feed
 
-    App->>Sparkle: Initialize (feed URL)
+    App->>Sparkle: Initialize feed URL
     loop Periodic Check
         Sparkle->>Feed: GET appcast.xml
         Feed-->>Sparkle: Latest version info

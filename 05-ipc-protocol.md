@@ -89,7 +89,7 @@ When a message arrives at `codex_desktop:message-from-view`, the routing logic f
 ```mermaid
 flowchart TD
     MSG["Incoming IPC Message"]
-    MSG --> VALIDATE["Validate sender<br/>(trusted webContents?)"]
+    MSG --> VALIDATE["Validate sender - trusted webContents"]
     VALIDATE -->|"Invalid"| REJECT["Reject with error"]
     VALIDATE -->|"Valid"| LOOKUP["Look up window context<br/>for this webContents"]
     LOOKUP -->|"No context"| DROP["Log warning, drop message"]
@@ -98,7 +98,7 @@ flowchart TD
     DISPATCH --> DSH_CHECK{"Is it a CLI-bound message?"}
     DSH_CHECK -->|"Yes"| DSH["DevboxSessionHandler.handleMessage"]
     DSH_CHECK -->|"No"| INTERNAL{"Is it an internal message?"}
-    INTERNAL -->|"Yes"| INT_HANDLE["Handle internally<br/>(window ops, settings, etc.)"]
+    INTERNAL -->|"Yes"| INT_HANDLE["Handle internally - window ops, settings"]
     INTERNAL -->|"No"| SKILL_CHECK{"Is it a skill message?"}
     SKILL_CHECK -->|"Yes"| SK["SkillManager.handleMessage"]
     SKILL_CHECK -->|"No"| UNKNOWN["Log unhandled message type"]
