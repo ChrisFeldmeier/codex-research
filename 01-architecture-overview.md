@@ -157,7 +157,7 @@ The renderer uses React for its component model and Vite for fast bundling. The 
 The Main Process consists of 39 modules. This graph shows the primary dependency relationships.
 
 ```mermaid
-graph TD
+flowchart TD
     INIT["app-init"] --> WM["WindowManager"]
     INIT --> IPC["IpcMessageRouter"]
     INIT --> PROTO["AppProtocolHandler"]
@@ -172,7 +172,7 @@ graph TD
 
     DSH --> STDIO["StdioConnection"]
     DSH --> WSC["WebSocketConnection"]
-    DSH --> AUTH["Auth / Token Cache"]
+    DSH --> AUTH["Auth Token Cache"]
     DSH --> TM["ThreadManager"]
 
     STDIO --> CLI["codex app-server"]
@@ -191,7 +191,7 @@ graph TD
     DSH --> FETCH["WebSocketMessageHandler"]
     FETCH --> AUTH
 
-    STATE --> SQLITE["SQLite (better-sqlite3)"]
+    STATE --> SQLITE["SQLite better-sqlite3"]
 
     TELE["TelemetryReporter"] --> SENTRY["Sentry"]
     TELE --> DD["Datadog Logger"]
